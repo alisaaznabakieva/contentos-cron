@@ -1,0 +1,16 @@
+name: Auto Publish Posts
+
+on:
+  schedule:
+    - cron: "* * * * *"
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger schedule-posts
+        run: |
+          curl -X POST https://hmnxuyudjgbgcyczdbau.supabase.co/functions/v1/schedule-posts \
+          -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}" \
+          -H "Content-Type: application/json"
