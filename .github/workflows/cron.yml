@@ -1,4 +1,4 @@
-name: Auto Publish Posts
+name: ContentOS Auto Publish
 
 on:
   schedule:
@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Trigger schedule-posts
         run: |
-          curl -X POST https://hmnxuyudjgbgcyczdbau.supabase.co/functions/v1/schedule-posts \
+          curl -X POST https://wxrqwdahzpauqwnytiwx.supabase.co/functions/v1/schedule-posts \
           -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}" \
-          -H "Content-Type: application/json"
+          -H "Content-Type: application/json" \
+          --max-time 55 \
+          --silent
